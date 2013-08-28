@@ -1,4 +1,4 @@
-== ClassReminder
+== CourseFolder
 
 An application that connects students and makes being student easier!
 
