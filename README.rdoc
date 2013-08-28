@@ -1,28 +1,11 @@
-== README
+== ClassReminder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An application that connects students and makes being student easier!
 
-Things you may want to cover:
+== Vision
 
-* Ruby version
+This application will create a network of reminders for important events in courses. Students will be able to enter a reminder for an assignment, an exam or any type of important event for a course and easily share it with other people taking the same course.
 
-* System dependencies
+== Current status
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+I just started the application from scratch and continue from here slowly but surely. To ensure code quality, I will use TDD.
