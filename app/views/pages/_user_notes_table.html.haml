@@ -1,0 +1,12 @@
+- if notes.empty?
+	%span.label.label-info You have no notes.
+- else
+	%table.table.table-bordered
+		%thead
+			%tr
+				%th Title
+				%th 
+		- notes.each do |note|
+			%tr
+				%td= link_to note.title, note_path(note)
+				%td Button
