@@ -6,5 +6,6 @@ class PagesController < ApplicationController
 
 	def dashboard
 		@upcoming_tasks = current_user.upcoming_tasks
+		@notes = current_user.notes
 	end
 end

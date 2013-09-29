@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130827192909) do
+ActiveRecord::Schema.define(version: 20130917002136) do
 
   create_table "courses", force: true do |t|
     t.string   "instructor"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 20130827192909) do
   add_index "notes", ["author_id"], name: "index_notes_on_author_id"
   add_index "notes", ["course_id"], name: "index_notes_on_course_id"
   add_index "notes", ["forked_from_id"], name: "index_notes_on_forked_from_id"
+
+  create_table "notifications", force: true do |t|
+    t.integer  "user_id"
+    t.boolean  "is_seen"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "tasks", force: true do |t|
     t.string   "name",        null: false

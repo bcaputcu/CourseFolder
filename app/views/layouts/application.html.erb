@@ -18,8 +18,9 @@
 						</li>
 					</ul>
 					<ul class="nav pull-right">
-						<% if user_signed_in? %>
+						<% if user_signed_in? %> 
 						<li><%= link_to current_user.email, edit_user_registration_path %></li>
+						<li><%= link_to  "<i class='icon-exclamation-sign'></i><sup><span class='badge'>#{current_user.notifications.count}</span></sup>".html_safe, "#" %></li>
 						<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
 						<% else %>
 						<li><%= link_to "Sign In", new_user_session_path %></li>

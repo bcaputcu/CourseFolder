@@ -5,6 +5,7 @@
 <div class="row">
 	<div class="span4">
 		<%= render partial: 'upcoming_tasks_table', locals: { upcoming_tasks: @upcoming_tasks } %>
+		<%= render partial: 'user_notes_table', locals: { notes: @notes } %>
 	</div>
 	<div class="span2 pull-right">
 		<%= render 'user_courses_table' %>
