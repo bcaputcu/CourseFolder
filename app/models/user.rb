@@ -6,12 +6,17 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable
 
   has_many :enrollments
-  has_many :courses, through: :enrollments
+  has_many :sections, through: :enrollments
+  has_many :courses, through: :sections
+
+  belongs_to :school
 
   has_many :notifications
 
-  has_many :tasks
-  has_many :notes, foreign_key: 'author_id'
+  has_many :reminders
+  has_many :tasks, through: :reminders
+
+  has_many :owned_tasks, class_name: 'Task', foreign_key: 'owner_id'
 
   def enroll! course
   	enrollments.create!(course_id: course.id)

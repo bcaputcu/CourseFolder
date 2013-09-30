@@ -1,10 +1,9 @@
 class Enrollment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :course
+  belongs_to :section
 
-  validates_presence_of :user
-  validates_presence_of :course
+  validates_presence_of :user_id, :section_id
 
-  validates :user_id, :uniqueness => {:scope => :course_id}
+  validates_uniqueness_of :user_id, scope: :section_id}
 
 end

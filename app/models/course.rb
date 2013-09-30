@@ -1,11 +1,11 @@
 class Course < ActiveRecord::Base
-	has_many :enrollments
-	has_many :users, through: :enrollments
 
+	belongs_to :school
+	has_many :sections
 	has_many :tasks
 
-	validates_presence_of :name
-	validates_uniqueness_of :name
+	validates_presence_of :school_id, :code
+	validates_uniqueness_of :code, scope: :school_id
 
 	def upcoming_tasks
 		tasks.where(start_date: Time.now.beginning_of_day .. 1.week.from_now)
