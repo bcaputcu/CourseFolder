@@ -22,16 +22,20 @@ class User < ActiveRecord::Base
 
   has_many :owned_tasks, class_name: 'Task', foreign_key: 'owner_id'
 
-  def enroll! course
-  	enrollments.create!(course_id: course.id)
+  def enroll! section
+  	enrollments.create!(section_id: section.id)
   end
 
-  def drop! course
-  	enrollments.find_by_course_id(course.id).destroy
+  def drop! section
+  	enrollments.find_by_section_id(section.id).destroy
   end
 
-  def enrolled? course
-  	!enrollments.find_by_course_id(course.id).blank?
+  def enrolled? section
+  	!enrollments.find_by_section_id(section.id).blank?
+  end
+
+  def enrolled_to_course? course
+    courses.include? course
   end
 
   def upcoming_tasks
@@ -51,9 +55,11 @@ class User < ActiveRecord::Base
   def enroll_school school_id
     school = School.find_by_id school_id
     if school
-      self.school = school
+      school.users << self
       self.flag.update!(new_user: :false)
     end
+
+    school
   end
 
 end

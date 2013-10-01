@@ -38,8 +38,11 @@ class SchoolsController < ApplicationController
   end
 
   def enroll
-    current_user.enroll_school params[:id]
-    redirect_to :root, notice: 'You have successfully selected a school'
+    if current_user.enroll_school(params[:id])
+      redirect_to :root, notice: 'You have successfully selected a school.'
+    else
+      redirect_to schools_path, error: 'An error as occurred while selecting school'
+    end
   end
 
   private

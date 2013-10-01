@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
 
-	before_filter :authenticate_user!, except: [:index, :show]
+	before_action :authenticate_user!, except: [:index, :show]
+	before_action :check_new_user, only: [:new]
 
 	def index
 		@last_5_courses = Course.find(:all, :order => "id desc", :limit => 5).reverse
@@ -20,14 +21,13 @@ class CoursesController < ApplicationController
 	end
 
 	def new
-		@course = Course.new
+		@course = current_user.school.courses.new
 	end
 
 	def create
-		@course = Course.new(course_params)
+		@course = current_user.school.courses.new(course_params)
 
 		if @course.save
-			current_user.enroll! @course
 			redirect_to @course
 		else
 			render action: 'new'
