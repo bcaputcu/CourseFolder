@@ -1,0 +1,12 @@
+%table.table.table-bordered
+	%thead
+		%tr
+			%th Name
+			%th Country
+			%th
+	%tbody
+		- results.each do |result|
+			%tr
+				%td= link_to result.name, result
+				%td= result.country
+				%td= link_to "Select", enroll_school_path(result), method: :put

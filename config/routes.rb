@@ -1,5 +1,11 @@
 CourseFolder::Application.routes.draw do
   
+  get "schools/new"
+  get "schools/create"
+  get "schools/index"
+  get "schools/show"
+  get "schools/update"
+  get "schools/delete"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -14,17 +20,22 @@ CourseFolder::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations'}
 
-  resources :users do
-    resources :notes
-  end
+  resources :users
 
   resources :courses do
     resources :tasks
+    resources :sections
   end
+
   resources :enrollments
-  resources :notes
+
+  resources :schools do
+    member do
+      put 'enroll'
+    end
+  end
 
   get '/dashboard' => 'pages#dashboard'
 

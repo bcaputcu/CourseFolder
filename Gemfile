@@ -58,6 +58,7 @@ gem 'thin'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'redcarpet'
 gem 'haml'
+gem 'country_select'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

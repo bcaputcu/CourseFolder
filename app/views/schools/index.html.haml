@@ -1,0 +1,20 @@
+.page-header
+	%h1 Explore Schools
+
+.row
+	.span6
+		= form_tag schools_path, method: :get, class: "form-horizontal" do
+			= text_field_tag :search, params[:search]
+			= submit_tag 'Search', class: 'btn', name: nil
+
+		- if params[:search]
+			- if @schools.count > 0
+				= render partial: 'results', locals: {results: @schools}
+
+				%span.label Your school is not in the list? Create it!
+			- else
+				%span.label No school found...
+			%br
+			%br
+			= link_to 'New School', new_school_path, class: 'btn'
+

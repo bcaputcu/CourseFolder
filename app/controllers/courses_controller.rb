@@ -17,7 +17,6 @@ class CoursesController < ApplicationController
 				format.html { redirect_to new_course_path, notice: 'Course do not exist. You can create a course from here.'}
 			end
 		end
-
 	end
 
 	def new

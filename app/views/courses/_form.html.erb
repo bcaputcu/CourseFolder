@@ -1,11 +1,9 @@
 <%= simple_form_for(@course, :html => { :class => 'form-horizontal' }) do |f| %>
 <%= f.input :name %>
-<%= f.input :school %>
-<%= f.input :instructor %>
+<%= f.input :instructor_name %>
 <div class="control-group">
 	<div class="controls">
 		<%= f.button :submit, :class => 'btn-primary' %>
 	</div>
 </div>
 <% end %>
-

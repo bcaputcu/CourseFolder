@@ -1,8 +1,8 @@
 class Course < ActiveRecord::Base
 
 	belongs_to :school
-	has_many :sections
-	has_many :tasks
+	has_many :sections, dependent: :destroy
+	has_many :tasks, dependent: :destroy
 
 	validates_presence_of :school_id, :code
 	validates_uniqueness_of :code, scope: :school_id
