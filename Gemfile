@@ -53,6 +53,7 @@ group :doc do
 end
 
 gem 'bootstrap-sass'
+gem "bootstrap-switch-rails"
 gem 'devise'
 gem 'thin'
 gem 'simple_form', '~> 3.0.0.rc'

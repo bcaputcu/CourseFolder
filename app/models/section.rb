@@ -10,8 +10,9 @@ class Section < ActiveRecord::Base
 
 	has_many :time_slots, dependent: :destroy
 
-  validates_presence_of :code
+  validates_presence_of :course_id
 	validates_uniqueness_of :code, scope: :course_id
 
+	accepts_nested_attributes_for :time_slots, allow_destroy: true
 
 end

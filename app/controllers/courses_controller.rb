@@ -34,9 +34,23 @@ class CoursesController < ApplicationController
 		end
 	end
 
+	def edit
+		@course = Course.find_by_id(params[:id])
+	end
+
+	def update
+		@course = Course.find_by_id(params[:id])
+
+		if @course.update_attributes(course_params)
+			redirect_to @course
+		else
+			render action: 'edit'
+		end
+	end
+
 	private
 	def course_params
-		params.require(:course).permit(:name, :code, :instructor_name)
+		params.require(:course).permit(:name, :code, :instructor_name, sections_attributes: [:id, :code, :_destroy, time_slots_attributes: [:id, :start_time, :end_time, :day, :_destroy]])
 	end
 
 end

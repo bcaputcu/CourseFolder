@@ -1,0 +1,13 @@
+.row
+	.span6
+		= f.input(:course_id, as: :hidden)
+		= f.input(:code)
+		= f.input :_destroy, :as => :boolean, :label => 'Remove Section'
+
+	.span6
+		= f.fields_for :time_slots do |builder|
+			= render 'time_slot_fields', f: builder
+
+		= link_to_add_fields "Time Slot", f, :time_slots
+
+%hr
