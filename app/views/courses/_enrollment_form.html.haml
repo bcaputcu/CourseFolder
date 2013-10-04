@@ -1,0 +1,4 @@
+- if current_user.enrolled_to_course?(course)
+	= render 'drop', course: course
+- else
+	= render 'enroll', course: course

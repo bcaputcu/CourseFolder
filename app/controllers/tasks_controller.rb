@@ -5,6 +5,7 @@ class TasksController < ApplicationController
 
 	def new
 		@task = current_user.tasks.new(course_id: @course.id)
+		@task.due_dates.new(section_id: current_user.find_enrolled_section(@course).id )
 	end
 
 	def create

@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+@enroll_to_section= (section_id) ->
+	$('#enrollment_section_id').val(section_id)
+	$('#new_enrollment').submit()
+
 @toggle_sections = (flag) ->
 	@sections_enabled = flag
 	if flag
@@ -12,6 +16,12 @@
 		$("#only_time_slots_form").show()
 
 jQuery ->
+
+	$('.time').datetimepicker({
+		format: 'HH:ii P',
+		showMeridian: true
+		startView: 'day'
+	})
 
 	$('form').on 'click', '.add_fields', (event) ->
 		time = new Date().getTime()

@@ -10,5 +10,6 @@ class Task < ActiveRecord::Base
 
 	validates_presence_of :owner_id, :course_id, :name, :category
 
+	accepts_nested_attributes_for :due_dates, :reject_if => :all_blank, allow_destroy: true
 
 end

@@ -1,17 +1,20 @@
 .page-header
 	.row
-		.span11
+		.span10
 			%h1
 				= "#{@course.name}"
 				%small= "by #{@course.instructor_name}"
+		.span1
+			%h1
+				= render 'enrollment_form', course: @course
 		.span1
 			%h1
 				%a.btn{:href => edit_course_path(@course)}
 					%i.icon-wrench
 
 
+
 = button_to "Create a new task", new_course_task_path(@course), class: "btn", method: "get" if current_user.enrolled_to_course? @course
 .row
 	.span3
 		= render 'course_tasks_table'
-

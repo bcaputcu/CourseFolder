@@ -4,7 +4,7 @@ class Course < ActiveRecord::Base
 	has_many :sections, dependent: :destroy
 	has_many :tasks, dependent: :destroy
 
-	has_many :time_slots, through: :sections
+	has_many :enrollments, through: :sections
 
 	validates_presence_of :school_id, :code
 	validates_uniqueness_of :code, scope: :school_id

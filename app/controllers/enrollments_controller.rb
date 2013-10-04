@@ -3,19 +3,19 @@ class EnrollmentsController < ApplicationController
 	before_filter :authenticate_user!
 
 	def create
-		@course = Course.find(params[:enrollment][:course_id])
-		current_user.enroll! @course
+		@section = Section.find(params[:enrollment][:section_id])
+		current_user.enroll! @section
 		respond_to do |format|
-			format.html { redirect_to @course }
+			format.html { redirect_to @section.course }
 			format.js
 		end
 	end
 
 	def destroy
-		@course = Enrollment.find(params[:id]).course
-		current_user.drop! @course
+		@section = Enrollment.find(params[:id]).section
+		current_user.drop! @section
 		respond_to do |format|
-			format.html { redirect_to @course }
+			format.html { redirect_to @section.course }
 			format.js
 		end
 	end

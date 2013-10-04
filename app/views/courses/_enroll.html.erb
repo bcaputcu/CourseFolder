@@ -1,4 +1,0 @@
-<%= form_for(current_user.enrollments.build(course_id: @course.id)) do |f| %>
-<%= f.hidden_field :course_id %>
-<%= f.submit "Enroll", class: "btn btn-primary" %>
-<% end %>

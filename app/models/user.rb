@@ -62,4 +62,12 @@ class User < ActiveRecord::Base
     school
   end
 
+  def find_enrollment_for_course(course)
+    enrollments.where(section_id: course.sections.map {|s| s.id} ).first
+  end
+
+  def find_enrolled_section(course)
+    find_enrollment_for_course(course).section
+  end
+
 end

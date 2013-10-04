@@ -1,0 +1,11 @@
+= simple_form_for([@course, @task], :html => { :class => 'form-horizontal' }) do |f|
+	= f.input :name
+	= f.input :description
+	= f.input :category
+
+	= f.fields_for(:due_dates) do |builder|
+		= render 'due_date_fields', f: builder
+
+	.control-group
+		.controls
+			= f.button :submit, :class => 'btn-primary'
