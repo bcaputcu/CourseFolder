@@ -2,12 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-@enable_sections = (flag) ->
+@toggle_sections = (flag) ->
+	@sections_enabled = flag
 	if flag
-		$('#sections_form').show();
+		$('#sections_form').show()
 		$("#only_time_slots_form").hide()
 	else
-		$('#sections_form').hide();
+		$('#sections_form').hide()
 		$("#only_time_slots_form").show()
 
 jQuery ->
@@ -24,5 +25,10 @@ jQuery ->
 		event.preventDefault()
 
 	$("#enable_sections_switch").on "switch-change", (e, data) ->
-		enable_sections data.value
+		toggle_sections data.value
 
+	$("#submit_course").on 'click', (event) ->
+		if sections_enabled
+			$("#only_time_slots_form").remove()
+		else
+			$('#sections_form').remove()
