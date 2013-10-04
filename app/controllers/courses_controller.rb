@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
 
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :check_new_user, only: [:new]
+	after_action :section_disable_check, only: [:create, :update]
 
 	def index
 		@last_5_courses = Course.find(:all, :order => "id desc", :limit => 5).reverse
@@ -22,6 +23,8 @@ class CoursesController < ApplicationController
 
 	def new
 		@course = current_user.school.courses.new
+		new_section = @course.sections.new
+		new_section.time_slots.new
 	end
 
 	def create
@@ -51,6 +54,12 @@ class CoursesController < ApplicationController
 	private
 	def course_params
 		params.require(:course).permit(:name, :code, :instructor_name, sections_attributes: [:id, :code, :_destroy, time_slots_attributes: [:id, :start_time, :end_time, :day, :_destroy]])
+	end
+
+	def section_disable_check
+		if @course.sections_enabled? && !params[:course][:enable_sections]
+			@course.disable_sections
+		end
 	end
 
 end

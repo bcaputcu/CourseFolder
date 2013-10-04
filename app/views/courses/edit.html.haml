@@ -1,39 +1,4 @@
 .page-header
 	%h1= "Edit Course"
 
-.row
-	.span12
-		%h3= "#{@course.name}"
-		= simple_form_for(@course, html: { class: 'form-horizontal'}) do |f|
-			= f.input(:name)
-			= f.input(:code)
-			= f.input(:instructor_name)
-
-			.control-group
-				.control-label{for: 'enable_sections'}
-					= label_tag 'Enable Sections'
-				.controls
-					.make-switch#enable_sections_switch
-						= check_box_tag 'enable_sections'
-
-			%hr
-			
-			#sections_form	
-				.row
-					.span6
-						%h4.controls Sections
-									
-					.span6
-						%h4.controls Time Slots
-
-				= f.fields_for(:sections) do |builder|
-					= render 'section_fields', f: builder
-
-				= link_to_add_fields "Section", f, :sections
-
-				%br
-				%br
-
-			.control-group
-				.controls
-					= f.button(:submit, class: 'btn-primary')
+= render 'form'

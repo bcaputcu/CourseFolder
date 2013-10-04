@@ -1,7 +1,7 @@
 class TimeSlot < ActiveRecord::Base
 	belongs_to :section
 
-	validates_presence_of :section_id, :start_time, :end_time, :day
+	validates_presence_of :start_time, :end_time, :day
 	
 	def start_time_with_format
 		start_time.strftime("%I:%M %p") if start_time

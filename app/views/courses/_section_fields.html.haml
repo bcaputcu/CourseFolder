@@ -1,13 +1,15 @@
-.row
-	.span6
-		= f.input(:course_id, as: :hidden)
-		= f.input(:code)
-		= f.input :_destroy, :as => :boolean, :label => 'Remove Section'
+%fieldset
+	.row
+		.span6
+			= f.input(:id, as: :hidden)
+			= f.input(:code)
+			= f.input :_destroy, :as => :hidden
+			=	link_to '<i class="icon-remove icon-white"></i> Remove Section'.html_safe, '#', class: 'btn btn-danger btn-small remove_fields controls'
 
-	.span6
-		= f.fields_for :time_slots do |builder|
-			= render 'time_slot_fields', f: builder
+		.span6
+			= f.fields_for :time_slots do |builder|
+				= render 'time_slot_fields', f: builder
 
-		= link_to_add_fields "Time Slot", f, :time_slots
+			= link_to_add_fields "Time Slot", f, :time_slots
 
-%hr
+	%hr

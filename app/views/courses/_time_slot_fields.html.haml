@@ -1,12 +1,19 @@
-= f.input(:day, collection: TimeSlot.days_collection, value_method: :value, label_method: :label )
-= f.input(:section_id, as: :hidden)
-= f.input(:start_time, as: :string, input_html: {class: 'time', value: f.object.start_time_with_format})
-= f.input(:end_time, as: :string, input_html: {class: 'time', value: f.object.end_time_with_format})
-= f.input :_destroy, :as => :boolean, :label => 'Remove Time Slot'
+%fieldset
+	= f.input(:day, collection: TimeSlot.days_collection, value_method: :value, label_method: :label )
+	= f.input(:id, as: :hidden)
+	= f.input(:start_time, as: :string, input_html: {class: 'time', value: f.object.start_time_with_format})
+	= f.input(:end_time, as: :string, input_html: {class: 'time', value: f.object.end_time_with_format})
+	= f.input :_destroy, :as => :hidden
+	=	link_to '<i class="icon-remove icon-white"></i> Remove Time Slot'.html_safe, '#', class: 'btn btn-danger btn-mini remove_fields controls'
 
-:javascript
-	$(function(){
-		$('.time').clockface({
-			format: 'hh:mm A'
+	%br
+	%br
+
+	%hr
+
+	:javascript
+		$(function(){
+			$('.time').clockface({
+				format: 'hh:mm A'
+			});
 		});
-	});
