@@ -10,6 +10,12 @@ class Task < ActiveRecord::Base
 
 	validates_presence_of :owner_id, :course_id, :name, :category
 
+	before_save :downcase_category
+
 	accepts_nested_attributes_for :due_dates, :reject_if => :all_blank, allow_destroy: true
+
+	def downcase_category
+		category.downcase!
+	end
 
 end

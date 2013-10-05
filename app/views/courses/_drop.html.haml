@@ -1,2 +1,2 @@
-= form_for(current_user.find_enrollment_for_course(@course), html: { method: :delete }) do |f|
-	= f.submit 'Drop', class: 'btn'
+= form_for(current_user.enrollments.for_course(@course).first, html: { method: :delete }) do |f|
+	= f.submit 'Drop', class: 'btn btn-warning'

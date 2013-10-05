@@ -4,9 +4,9 @@
 			= f.input(:id, as: :hidden)
 			= f.input(:code)
 			= f.input :_destroy, :as => :hidden
-			=	link_to '<i class="icon-remove icon-white"></i> Remove Section'.html_safe, '#', class: 'btn btn-danger btn-small remove_fields controls'
+			=	link_to "#{icon('remove', white: true)} Remove Section".html_safe, '#', class: 'btn btn-danger btn-small remove_fields controls'
 
-		.span6
+		.span6#time_slot_fields
 			= f.fields_for :time_slots do |builder|
 				= render 'time_slot_fields', f: builder
 

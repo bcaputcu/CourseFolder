@@ -14,7 +14,7 @@
 		<tr>
 			<td><%= task.name %></td>
 			<td><%= link_to task.course.name, course_path(task.course) %></td>
-			<td><%= task.start_date %></td>
+			<td><%= task.description %></td>
 		</tr>
 		<% end %>
 	</tbody>

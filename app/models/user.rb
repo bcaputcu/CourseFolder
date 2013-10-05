@@ -5,7 +5,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :enrollments, dependent: :destroy
+  has_many :enrollments, dependent: :destroy do
+    def for_course (course)
+      where(section_id: course.sections.map {|s| s.id} )
+    end
+  end
+
   has_many :sections, through: :enrollments
   has_many :courses, through: :sections
 
@@ -43,7 +48,7 @@ class User < ActiveRecord::Base
   	courses.each do |course|
   		tasks += course.upcoming_tasks
   	end
-  	tasks.sort_by &:start_date
+  	tasks
   end
 
   def hook_tables
@@ -60,14 +65,6 @@ class User < ActiveRecord::Base
     end
 
     school
-  end
-
-  def find_enrollment_for_course(course)
-    enrollments.where(section_id: course.sections.map {|s| s.id} ).first
-  end
-
-  def find_enrolled_section(course)
-    find_enrollment_for_course(course).section
   end
 
 end

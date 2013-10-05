@@ -1,11 +1,26 @@
 = simple_form_for([@course, @task], :html => { :class => 'form-horizontal' }) do |f|
 	= f.input :name
 	= f.input :description
-	= f.input :category
+	= f.input :category, collection: ['Homework', 'Quiz', 'Exam']
 
-	= f.fields_for(:due_dates) do |builder|
-		= render 'due_date_fields', f: builder
+	#individual_due_dates
+		= f.fields_for(:due_dates) do |builder|
+			= builder.input(:section_id, as: :hidden)
+			= builder.input(:expiry_datetime, as: :string, label: "Due Date for Section #{builder.object.section.code}", input_html: {class: 'form_datetime'})
+
+	#user_due_date
+		= f.fields_for(:due_dates, @task.due_dates.new(section_id: @user_section.id)) do |builder|
+			= builder.input(:section_id, as: :hidden)
+			= builder.input(:expiry_datetime, as: :string, label: 'Due Date', input_html: {class: 'form_datetime'})
+
+	.control-group
+		%label.control-label{for: 'todo'} Same due date for every section?
+		.controls	
+			= check_box_tag 'same_due_date_toggle', true, {checked: true}
 
 	.control-group
 		.controls
-			= f.button :submit, :class => 'btn-primary'
+			= f.button :submit, :class => 'btn-primary', id: 'submit_task'
+
+:javascript
+	toggle_same_due_dates(true)

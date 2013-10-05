@@ -4,7 +4,8 @@
 	= f.input(:start_time, as: :string, input_html: {class: 'time', value: f.object.start_time_with_format})
 	= f.input(:end_time, as: :string, input_html: {class: 'time', value: f.object.end_time_with_format})
 	= f.input :_destroy, :as => :hidden
-	=	link_to '<i class="icon-remove icon-white"></i> Remove Time Slot'.html_safe, '#', class: 'btn btn-danger btn-mini remove_fields controls'
+
+	= link_to "#{icon('remove', white: true)} Remove Time Slot".html_safe, '#', class: 'btn btn-danger btn-mini remove_fields controls'
 
 	%br
 	%br

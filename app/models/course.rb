@@ -14,7 +14,8 @@ class Course < ActiveRecord::Base
 	validates :sections, :nested_attributes_uniqueness => {:field => :code}
 
 	def upcoming_tasks
-		tasks.where(start_date: Time.now.beginning_of_day .. 1.week.from_now)
+		tasks
+		# tasks.where(start_date: Time.now.beginning_of_day .. 1.week.from_now)
 	end
 
 	def sections_enabled?

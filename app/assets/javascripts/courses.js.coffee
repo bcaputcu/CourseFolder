@@ -15,13 +15,22 @@
 		$('#sections_form').hide()
 		$("#only_time_slots_form").show()
 
-jQuery ->
-
+@init_datetimepicker = ->
 	$('.time').datetimepicker({
 		format: 'HH:ii P',
 		showMeridian: true
 		startView: 'day'
 	})
+
+jQuery ->
+
+	init_datetimepicker()
+
+	$('#time_slot_fields').on 'click', '.time', (event) ->
+		# check to see if already initiated
+		init_datetimepicker()
+		$(this).datetimepicker('show')
+
 
 	$('form').on 'click', '.add_fields', (event) ->
 		time = new Date().getTime()
