@@ -8,4 +8,4 @@ This application will create a network of reminders for important events in cour
 
 == Current status
 
-I just started the application from scratch and continue from here slowly but surely. To ensure code quality, I will use TDD.
+Under development...
