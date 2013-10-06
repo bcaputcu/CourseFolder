@@ -4,6 +4,15 @@ class CoursesController < ApplicationController
 	before_action :check_new_user, only: [:new]
 	after_action :section_disable_check, only: [:create, :update]
 
+	def events
+		user_section = current_user.sections.find_by course_id: params[:id]
+		events_json = DueDate.events_for_sections(user_section.id)
+
+		respond_to do |format|
+			format.json {render json: events_json}
+		end
+	end
+
 	def index
 		@last_5_courses = Course.find(:all, :order => "id desc", :limit => 5).reverse
 	end

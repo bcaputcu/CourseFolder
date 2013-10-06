@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :enrollments, dependent: :destroy do
     def for_course (course)
-      where(section_id: course.sections.map {|s| s.id} )
+      where(section_id: course.sections.pluck(:id) )
     end
   end
 

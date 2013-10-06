@@ -27,6 +27,9 @@ CourseFolder::Application.routes.draw do
   resources :courses do
     resources :tasks
     resources :sections
+    member do
+      get 'events'
+    end
   end
 
   resources :enrollments

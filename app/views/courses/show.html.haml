@@ -18,6 +18,7 @@
 
 %br
 
-.row
-	.span3
-		= render 'course_tasks_table'
+#calendar
+
+:javascript
+	$('#calendar').calendar({events_source: '#{@course.id}/events.json'});

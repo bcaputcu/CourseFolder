@@ -3,6 +3,7 @@ class Course < ActiveRecord::Base
 	belongs_to :school
 	has_many :sections, dependent: :destroy
 	has_many :tasks, dependent: :destroy
+	has_many :due_dates, through: :tasks
 
 	has_many :enrollments, through: :sections
 

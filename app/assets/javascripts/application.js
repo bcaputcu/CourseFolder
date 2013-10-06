@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-switch
+//= require underscore-min
+//= require jstz
+//= require calendar
 //= require_tree .
