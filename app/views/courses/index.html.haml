@@ -1,0 +1,6 @@
+.page-header
+  %h1
+    Explore Courses #{link_to "New Course", new_course_path, class: "btn pull-right"}
+%div{clas: "row"}
+  .span2
+    = render "recently_created_courses_table"

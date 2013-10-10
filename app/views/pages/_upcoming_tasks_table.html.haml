@@ -1,0 +1,15 @@
+- if upcoming_tasks.empty?
+  %span.label.label-info There is no scheduled tasks.
+- else
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th Upcoming tasks
+        %th Course
+        %th Date
+    %tbody
+      - upcoming_tasks.each do |task|
+        %tr
+          %td= task.name
+          %td= link_to task.course.name, course_path(task.course)
+          %td= task.description
