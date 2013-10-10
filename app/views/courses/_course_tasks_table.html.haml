@@ -1,0 +1,10 @@
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Task name
+      %th Date
+  %tbody
+    - @course.tasks.each do |task|
+      %tr
+        %td= task.name
+        %td= task.description

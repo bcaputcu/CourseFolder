@@ -1,0 +1,8 @@
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Recently Created
+  %tbody
+    - @last_5_courses.each do |course|
+      %tr
+        %td= link_to course.name, course
