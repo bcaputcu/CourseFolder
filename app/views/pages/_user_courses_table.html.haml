@@ -1,0 +1,9 @@
+%table.table.table-bordered
+  %thead
+    %tr
+      %th
+        Your courses (#{current_user.courses.count})
+  %tbody
+    - current_user.courses.each do |course|
+      %tr
+        %td= link_to course.name, course

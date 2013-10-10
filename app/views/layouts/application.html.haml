@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %title CourseFolder
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to "Home", :root, class: "brand"
+          .container
+            %ul.nav
+              %li
+                = link_to "Explore", courses_path
+            %ul.nav.pull-right
+              - if user_signed_in?
+                %li= link_to current_user.email, edit_user_registration_path
+                %li= link_to  "#{icon('exclamation-sign')}<sup><span class='badge'>#{current_user.notifications.count}</span></sup>".html_safe, "#"
+                %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+              - else
+                %li= link_to "Sign In", new_user_session_path
+                %li= link_to "Sign Up", new_user_registration_path
+          / /.nav-collapse
+    #main{role: "main"}
+      .container
+        .content
+          .row
+            .span12
+              = render 'layouts/messages'
+              = yield
+      / ! end of .container
+    / ! end of #main
