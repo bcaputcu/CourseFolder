@@ -1,4 +1,8 @@
 .page-header
-	%h1= "#{@school.name}"
-	%h5.small= "#{@school.country}"
-
+	.row
+		.span10
+			%h1
+				= "#{@school.name}"
+				%small= "in #{@school.country}"
+		.span2
+			%h1= render('enrollment_form', school: @school)
