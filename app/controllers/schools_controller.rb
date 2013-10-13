@@ -1,10 +1,10 @@
 class SchoolsController < ApplicationController
   def new
-    @school = School.new
+    @school = School.new(school_params)
   end
 
   def index
-    @schools = School.search params[:search]
+    @schools = School.search(params[:search])
   end
 
 
