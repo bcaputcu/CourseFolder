@@ -4,6 +4,8 @@ An application that connects students and makes being student easier!
 
 == Vision
 
+Change in Master
+
 This application will create a network of reminders for important events in courses. Students will be able to enter a reminder for an assignment, an exam or any type of important event for a course and easily share it with other people taking the same course.
 
 == Current status
