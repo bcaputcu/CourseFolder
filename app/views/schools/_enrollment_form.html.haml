@@ -1,0 +1,4 @@
+- if current_user.school == school
+	= button_to("Already selected", enroll_school_path(school), method: :put, class: 'btn disabled', disabled: true)
+- else
+	= button_to("Select", enroll_school_path(school), method: :put, class: 'btn btn-primary')
