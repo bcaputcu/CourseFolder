@@ -9,3 +9,5 @@ This application will create a network of reminders for important events in cour
 == Current status
 
 Under development....
+
+Test2
